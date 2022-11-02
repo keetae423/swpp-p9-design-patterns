@@ -23,7 +23,10 @@ class B:
         return getattr(B._instance, name)
 
     def __init__(self, value=0):
-        # TODO: fill constructor
+        if B._instance is not None:
+            B._instance.value = value
+        else:
+            B._instance = B._B(value)
 
 
 if __name__ == "__main__":

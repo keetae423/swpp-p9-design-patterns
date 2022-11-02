@@ -16,14 +16,14 @@ class Person:
 
 class Adapter:
     def __init__(self, obj, **adapted_methods):
-        # TODO: fill this
+        self.obj = obj
+        self.__dict__.update(adapted_methods)
 
     def __getattr__(self, attr):
-        # TODO: fill this
-
+        return getattr(self.obj, attr)
 
 if __name__ == "__main__":
     dog = Dog()
-    talkable = Adapter(dog, # TODO: fill this)
+    talkable = Adapter(dog, bark=dog.bark)
     print(talkable.name)
     print(talkable.talk())

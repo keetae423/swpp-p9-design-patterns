@@ -32,7 +32,10 @@ class Building(A):
 
 
 def build(cls):
-    # TODO: fill this method
+    structure = cls()
+    structure.build_floor()
+    structure.build_body()
+    structure.build_ceiling()
 
 
 if __name__ == "__main__":

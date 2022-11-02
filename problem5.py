@@ -1,6 +1,5 @@
 import time
 
-
 class Counselor:
     def __init__(self):
         self.busy = False
@@ -16,9 +15,13 @@ class PhoneCall:
 
     def talk(self):
         if self.current_time == 'weekdays':
-            # TODO: fill this function
-            # If you want, you can add time.sleep(0.1) before you call talk() in Counselor
-            # to simulate the waiting time.
+            for counselor in self.counselors:
+                if not counselor.busy:
+                    counselor.busy = True
+                    time.sleep(0.1)
+                    counselor.talk()
+                    return
+            print('No available counselor')
         else:
             time.sleep(0.1)
             print('Counselor will not talk to you')
